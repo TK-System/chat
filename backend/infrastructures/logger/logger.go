@@ -7,12 +7,15 @@ import (
 
 type Logger struct{
 	file *os.File
+	outputInfo bool
 	isDebug bool
 }
 
-func NewLogger(isDebug bool)*Logger{
+func NewLogger(info ,isDebug bool)*Logger{
+	f := os.Stdout
 	return &Logger{
-		file:nil,
+		file:f,
+		outputInfo: info,
 		isDebug:isDebug,
 	}
 }
@@ -34,6 +37,15 @@ func (l *Logger)Error(format string,a ...interface{}){
 }
 
 func (l *Logger)Info(format string,a ...interface{}){
-	label := "[INFO]"
-	fmt.Fprintf(l.file,"%s "+format,label,a)
+	if l.outputInfo{
+		label := "[INFO]"
+		fmt.Fprintf(l.file,"%s "+format,label,a)
+	}
+}
+
+func (l *Logger)Debug(format string,a ...interface{}){
+	if l.isDebug{
+		label := "[DEBUG]"
+		fmt.Fprintf(l.file,"%s "+format,label,a)
+	}
 }

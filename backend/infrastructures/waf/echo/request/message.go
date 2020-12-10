@@ -14,10 +14,7 @@ func NewMessage()*Message{
 }
 
 func (m *Message)Get()echo.HandlerFunc{
-
 	return func(c echo.Context)error{
-
-
 		return c.JSON(http.StatusOK,&TestJSON{"HelloWorld"})
 	}
 }

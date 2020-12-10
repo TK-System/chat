@@ -18,7 +18,10 @@ func NewRouter()*Router{
 
 func (r *Router)setRoute(){ 
 	msg := request.NewMessage()
-	r.r.GET("/",msg.Get())
+	r.r.GET("/message",msg.Get())
+	r.r.POST("/message",msg.Get())
+
+
 }
 
 func (r *Router)runServer()error{

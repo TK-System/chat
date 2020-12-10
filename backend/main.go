@@ -7,9 +7,9 @@ import (
 
 func main() {
 	fmt.Println("hello")
-	
-r := echo.NewRouter()
-r.Run()
+
+	r := echo.NewRouter()
+	r.Run()
 
 	return
 }
