@@ -1,7 +1,9 @@
 package database
 
-type DBHandler interface{
+import "chat/backend/entity/domain"
 
+type DBHandler interface{
+	User()
 }
 
 type UserRepositoryAdapter struct{
@@ -13,4 +15,8 @@ func NewUserRepositoryAdapter(dbHandler DBHandler)*UserRepositoryAdapter{
 	return &UserRepositoryAdapter{
 		DBHandler: dbHandler,
 	}
+}
+
+func (adapter *UserRepositoryAdapter)	Find([]domain.UserID)([]domain.User,error){
+	adapter
 }

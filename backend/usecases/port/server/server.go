@@ -9,7 +9,6 @@ import "chat/backend/entity/domain"
 
 type UserInputPort interface {
 	DownloadUser(UserIdentifiers)error
-
 	UploadUser(UserComponents)error
 }
 
@@ -28,6 +27,5 @@ type UserIdentifiers interface{
 
 type UserOutputPort interface{
 	DownloadUser([]domain.User)error
-
 	UploadUser()
 }
