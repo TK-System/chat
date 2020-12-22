@@ -1,9 +1,9 @@
 package gin
 
 import (
-	"net/http"
-	"io/ioutil"
 	"fmt"
+	"io/ioutil"
+	"net/http"
 
 	"github.com/gin-gonic/gin"
 )
@@ -42,8 +42,11 @@ func MessageHandler(c *gin.Context){
 	})
 }
 
+
+
+
 func LoginHandler(c *gin.Context){
-	res := fileRead("/home/ampamman/go/src/chat/frontend/login.html")
+	res := fileRead("/home/baikimman/go/src/caht/frontend/login.html")
 	fmt.Println("\n",c.PostForm("mail"),"\n",c.PostForm("password"))
 	c.Writer.WriteString(
 		res,
@@ -51,7 +54,7 @@ func LoginHandler(c *gin.Context){
 }
 
 func FriendListHandler(c *gin.Context){
-	res := fileRead("/home/ampamman/go/src/chat/frontend/friendList.html")
+	res := fileRead("/home/baikimman/go/src/caht/frontend/friendList.html")
 	fmt.Println("\n",c.PostForm("mail"),"\n",c.PostForm("password"))
 	fmt.Println(c)
 	c.Writer.WriteString(
