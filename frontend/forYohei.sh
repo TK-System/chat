@@ -5,6 +5,7 @@ sudo apt install docker.io -y
 sudo groupadd docker
 sudo gpasswd -a $USER docker
 
+sudo systemctl enable docker
 sudo systemctl restart docker
 
 echo "再起動してね！"
