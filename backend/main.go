@@ -1,17 +1,15 @@
 package main
 
 import (
-	"chat/backend/infrastructures/waf/gin"
+	"chat/backend/infrastructures/cmd"
 	"fmt"
 )
 
 func main() {
-	fmt.Println("hello")
-
-	r := gin.NewRouter(":1234")
-	err :=r.RunServer()
+	err :=cmd.RootCmd.Execute()
+	fmt.Printf("HELLO server starts\n")
 	if err !=nil{
-		fmt.Printf("%#v\n",err)
+		fmt.Printf("error: %w",err)
 	}
-	return
+	return 
 }
