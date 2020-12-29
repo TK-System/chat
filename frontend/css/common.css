@@ -34,3 +34,9 @@ fieldset{
   color: black;
   text-decoration: none;
 }
+
+/* bottun */
+.btn_position{
+  position: absolute;
+  bottom: 10%;
+}
