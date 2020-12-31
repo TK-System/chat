@@ -29,11 +29,12 @@ body {
   }
   
   .message-box {
-    padding: 20px;
-    max-width: 40%;
+    padding: 10px;
+    max-width: 50%;
     margin: 10px;
-    border-radius: 30px;
+    border-radius: 20px;
     vertical-align: middle;
+    line-height: 1.3em;
   }
   
   .white {

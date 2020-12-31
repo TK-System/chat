@@ -53,7 +53,7 @@
       //aTag for accordion
       var groupText = document.createElement("a");
       //a setAttribute
-      groupText.setAttribute("class", "ext-body d-block p-3 m-n3");
+      groupText.setAttribute("class", "ext-body d-block p-3 m-n3 link_color");
       groupText.setAttribute("data-toggle", "collapse");
       groupText.setAttribute("href", "#collapseOne");
       groupText.setAttribute("role", "button");
@@ -75,16 +75,23 @@
       var groupData = {
         // n人分
         list: [
-          { id: '1', name: 'TK-corporation-1' },
-          { id: '2', name: 'TK-corporation-2' },
-          { id: '3', name: 'TK-corporation-3' },
+          { id: '1', name: 'TK-corporation-1', icon: 'img/pichu.png' },
+          { id: '2', name: 'TK-corporation-2', icon: 'img/pikachu.jpg' },
+          { id: '3', name: 'TK-corporation-3', icon: 'img/raichu.png' },
         ]
       };
       //loop
       for (var i = 0; i < groupData.list.length; i++) {
         var groupInfo2 = document.createElement("div");
         groupInfo2.setAttribute("class", "card-body");
-
+        //image
+        var imgIcon = document.createElement("img");
+        imgIcon.setAttribute("src", groupData.list[i].icon);
+        imgIcon.setAttribute("alt", "image");
+        imgIcon.setAttribute("class", "rounded-circle icon");
+        imgIcon.style.marginRight = "10px";
+        groupInfo2.appendChild(imgIcon);
+        //name
         var nextLink = document.createElement("a");
         nextLink.setAttribute("id", "nextLink" + i);
         nextLink.setAttribute("href", "./talkRoom.html");
@@ -128,7 +135,7 @@
       //aTag for accordion
       var friendText = document.createElement("a");
       //a setAttribute
-      friendText.setAttribute("class", "ext-body d-block p-3 m-n3");
+      friendText.setAttribute("class", "ext-body d-block p-3 m-n3 link_color");
       friendText.setAttribute("data-toggle", "collapse");
       friendText.setAttribute("href", "#collapseTwo");
       friendText.setAttribute("role", "button");
@@ -150,9 +157,12 @@
       var friendData = {
         // n人分
         list: [
-          { id: '1', name: '山田 一郎' },
-          { id: '2', name: '山田 二郎' },
-          { id: '3', name: '山田 三郎' },
+          { id: '1', name: '山田 一郎', icon: 'img/myface.png' },
+          { id: '2', name: '山田 二郎', icon: 'img/myface.png' },
+          { id: '3', name: '山田 三郎', icon: 'img/myface.png' },
+          { id: '4', name: '山田 4郎', icon: 'img/myface.png' },
+          { id: '5', name: '山田 5郎', icon: 'img/myface.png' },
+          { id: '6', name: '山田 6郎', icon: 'img/myface.png' },
         ]
       };
       //loop
@@ -162,6 +172,15 @@
         var friendInfo2 = document.createElement("div");
         //a setAttribute
         friendInfo2.setAttribute("class", "card-body");
+
+        //image
+        var imgIcon = document.createElement("img");
+        imgIcon.setAttribute("src", friendData.list[i].icon);
+        imgIcon.setAttribute("alt", "image");
+        imgIcon.setAttribute("class", "rounded-circle icon");
+        imgIcon.style.marginRight = "10px";
+        friendInfo2.appendChild(imgIcon);
+
         //???
         var nextLink = document.createElement("a");
         nextLink.setAttribute("id", "nextLink" + i);
@@ -188,6 +207,7 @@
       button1.innerHTML = "ログアウト";
       buttonArea.appendChild(button1);
     }
+    console.log(screen.width);
   </script>
 
   <form id="form" method="POST" action="./login.html">
