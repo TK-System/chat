@@ -6,16 +6,145 @@
 | [GetUser](#GetUser) | GET | /user/{user_id} | get user information |
 | [AddFriend](#AddFriend) | POST | /user/{user_id}/friend/ | add friend relation |
 | [GetFriend](#GetFriend) | GET | /user/{user_id}/friend/ | get friends id |
-| [DeleteFriend](#DeleteFriend) | DELETE | /user/{user_id}/friend/{friend_id} | delete friend relation |
+| [DeleteFriend](#DeleteFriend) | PUT | /user/{user_id}/friend/{friend_id} | delete friend relation |
 | [CreateRoom](#CreateRoom) | POST | /room/ | create talk room |
 | [GetRoom](#GetRoom) | GET | /room/{room_id} | get room information |
 | [GetRoomMessage](#GetRoomMessage) | GET | /room/{room_id}/message | get room messages |
 | [CreateGroup](#CreateGroup) | POST | /group/ | create new group |
 | [GetGroup](#GetGroup) | GET | /group/{group_id} | get group information |
 | [JoinGroup](#JoinGroup) | POST | /group/{group_id} | join to group |
-| [OutGroup](#OutGroup) | DELETE | /group/{group_id}/{user_id} | get out group |
-| [SendMessage](#sendmessage) | POST | /message/ | send message |
+| [OutGroup](#OutGroup) | PUT | /group/{group_id}/{user_id} | get out group |
+| [SendMessage](#Sendmessage) | POST | /message/ | send message |
 | [GetMessage](#GetMessage) | GET | /message/{message_id} | get message |
+
+## User
+
+- user information
+
+### Create User
+
+create new user
+
+- method `POST`
+- URI `/user/`
+
+#### Request
+
+```json:CreateUser request
+{
+    "name": "Albert Einstein",
+    "mail": "albert.e@domain.com",
+    "sex": 1
+}
+```
+
+| key | variable type | mandatory | default | description |
+| :-: | :-: | :-: | :-: | :-: |
+| name | string | **o** | - | user name |
+| mail | string | x | null | email address |
+| sex | int | x | null | 1: male, 2: female, 3: other |
+
+#### Response
+
+- http status
+
+| status code | description |
+| :-: | :-: |
+| 200 | success |
+| 400 | request parameter error |
+| 500 | internal server error |
+
+- response body
+
+```json:CreateUser response
+{
+    "id": 1
+}
+```
+
+| key | variable type | nullable | description |
+| :-: | :-: | :-: | :-: |
+| id | int | x | created user id |
+
+### Get User
+
+get user information
+
+- method `GET`
+- URI `/user/{user_id}`
+
+#### Request
+
+- query parameter
+
+| key | variable type | mandatory | default | description |
+| :-: | :-: | :-: | :-: | :-: |
+| user_id | int | **o** | - | user id to retrieve |
+
+### Response
+
+- http status
+
+| status code | description |
+| :-: | :-: |
+| 200 | success |
+| 500 | internal server error |
+
+```ison:user response
+{
+    "userId":1,
+    "userName":"Albert Einstein"
+}
+```
+
+## Friend
+
+### CreateFriend
+
+create new friend
+
+- method `POST`
+- URI `/friend/{user id}`
+
+#### Request
+
+```json:create friend request
+{
+    "me": 1,
+    "you": 2,
+    "like": true,
+    "each": true
+}
+```
+
+| key | variable type | mandatory | default | description |
+| :-: | :-: | :-: | :-: | :-: |
+| me | int | **o** | - | own user id |
+| you | int | **o** | - | target user id |
+| like | bool | x | true | friend or block |
+| each | bool | x | false | add friend info each other |
+
+#### Response
+
+- http status
+
+| status code | description |
+| :-: | :-: |
+| 200 | success |
+| 400 | request parameter error |
+| 500 | internal server error |
+
+- response body
+
+```json:create friend response
+{
+    "id": 1
+}
+```
+
+| key | variable type | nullable | description |
+| :-: | :-: | :-: | :-: |
+| id | int | x | created firend id |
 
 ## Message
 
@@ -133,131 +262,9 @@
 ***無し, roomAPIに追加するかも***
 - message id の配列を返却
 
-## User
 
-- user information
 
-### Create User
 
-- create new user
-
-- method `POST`
-- URI `/user/`
-
-#### Request
-
-```json:CreateUser request
-{
-    "name": "Albert Einstein",
-    "mail": "albert.e@domain.com",
-    "sex": 1
-}
-```
-
-| key | variable type | mandatory | default | description |
-| :-: | :-: | :-: | :-: | :-: |
-| name | string | **o** | - | user name |
-| mail | string | x | null | email address |
-| sex | int | x | null | 1: male, 2: female, 3: other |
-
-#### Response
-
-- http status
-
-| status code | description |
-| :-: | :-: |
-| 200 | success |
-| 400 | request parameter error |
-| 500 | internal server error |
-
-- response body
-
-```json:CreateUser response
-{
-    "id": 1
-}
-```
-
-| key | variable type | nullable | description |
-| :-: | :-: | :-: | :-: |
-| id | int | x | created user id |
-
-### Get User
-
-- get user information
-
-- method `GET`
-- URI `/user/{user_id}`
-
-#### Request
-
-- query parameter
-
-| key | variable type | mandatory | default | description |
-| :-: | :-: | :-: | :-: | :-: |
-| user_id | int | **o** | - | user id to retrieve |
-
-### Response
-
-- http status
-
-| status code | description |
-| :-: | :-: |
-| 200 | success |
-| 500 | internal server error |
-
-```ison:user response
-{
-    "userId":1,
-    "userName":"Albert Einstein"
-}
-```
-
-## Friend
-
-### CreateFriend
-
-- method `POST`
-- URI `/friend/{user id}`
-
-#### Request
-
-```json:create friend request
-{
-    "me": 1,
-    "you": 2,
-    "like": true,
-    "each": true
-}
-```
-
-| key | variable type | mandatory | default | description |
-| :-: | :-: | :-: | :-: | :-: |
-| me | int | **o** | - | own user id |
-| you | int | **o** | - | target user id |
-| like | bool | x | true | friend or block |
-| each | bool | x | false | add friend info each other |
-
-#### Response
-
-- http status
-
-| status code | description |
-| :-: | :-: |
-| 200 | success |
-| 400 | request parameter error |
-| 500 | internal server error |
-
-- response body
-
-```json:CreateUser response
-{
-}
-```
-
-| key | variable type | nullable | description |
-| :-: | :-: | :-: | :-: |
-| id | int | x | created user id |
 
 ## Group
 

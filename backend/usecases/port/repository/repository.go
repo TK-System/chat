@@ -16,3 +16,4 @@ type MessageRepository interface{
 	Find([]domain.MessageID)([]domain.Message,error)
 	Add([]domain.Message)error
 }
+
