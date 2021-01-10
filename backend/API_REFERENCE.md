@@ -21,7 +21,7 @@
 
 - user information
 
-### Create User
+### CreateUser
 
 create new user
 
@@ -66,7 +66,7 @@ create new user
 | :-: | :-: | :-: | :-: |
 | id | int | x | created user id |
 
-### Get User
+### GetUser
 
 get user information
 
@@ -99,7 +99,8 @@ get user information
 
 ## Friend
 
-### CreateFriend
+### AddFriend
+
 
 create new friend
 
@@ -145,6 +146,41 @@ create new friend
 | key | variable type | nullable | description |
 | :-: | :-: | :-: | :-: |
 | id | int | x | created firend id |
+
+
+
+
+### GetFriend
+
+
+create new friend
+
+- method `Get`
+- URI `/friend/{user id}`
+
+#### Request
+
+#### Response
+
+- http status
+
+| status code | description |
+| :-: | :-: |
+| 200 | success |
+| 400 | request parameter error |
+| 500 | internal server error |
+
+- response body
+
+```json:create friend response
+{
+    "friendId": [1,2,3]
+}
+```
+
+| key | variable type | nullable | description |
+| :-: | :-: | :-: | :-: |
+| friendId | []int | x | firend id array |
 
 ## Message
 

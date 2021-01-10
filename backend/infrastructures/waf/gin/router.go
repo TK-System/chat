@@ -46,7 +46,7 @@ func MessageHandler(c *gin.Context){
 
 
 func LoginHandler(c *gin.Context){
-	res := fileRead("/home/baikimman/go/src/caht/frontend/login.html")
+	res := fileRead("/home/ubuntu/app/page/login.html")
 	fmt.Println("\n",c.PostForm("mail"),"\n",c.PostForm("password"))
 	c.Writer.WriteString(
 		res,
@@ -54,7 +54,7 @@ func LoginHandler(c *gin.Context){
 }
 
 func FriendListHandler(c *gin.Context){
-	res := fileRead("/home/baikimman/go/src/caht/frontend/friendList.html")
+	res := fileRead("/home/ubuntu/app/page/friendList.html")
 	fmt.Println("\n",c.PostForm("mail"),"\n",c.PostForm("password"))
 	fmt.Println(c)
 	c.Writer.WriteString(
