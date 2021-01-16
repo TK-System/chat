@@ -9,3 +9,16 @@ services:
       POSTGRES_PASSWORD: example
     ports:
       - 5432:5432
+
+  db:
+    image: mysql8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: chatdb
+      MYSQL_USER: tksystem
+      MYSQL_PASSWORD: covit19
+    port: 
+      - 3306:3306
+      
+    
+

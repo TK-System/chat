@@ -23,11 +23,11 @@ func NewRouter(port string)*Router{
 }
 
 func (r *Router)setRouter(){
-	r.GET("/",MessageHandler)
-	r.GET("/user")
-	r.GET("/login/",LoginHandler)
-	r.POST("/friendList/",FriendListHandler)
+	UserRouter(r)
+	FriendRouter(r)
 
+	r.GET("/",MessageHandler)
+	r.GET("/login/",LoginHandler)
 }
 
 func (r *Router)RunServer()error{

@@ -3,11 +3,18 @@
 	text-align: center;
 }
 
-/* 画像サイズ */
-.imgSize {
-	width:150px;
-	height:150px;
+/* TOP画像サイズ */
+.top_icon {
+	width:30%;
+	height:30%;
 }
+
+/* border */
+img.icon {
+   border: 2px black solid; 
+   width:4%;
+   height:4%;
+  }
 
 /* regist画面フォーマット */
 .container {
@@ -33,4 +40,61 @@ fieldset{
 .link_color{
   color: black;
   text-decoration: none;
+}
+
+/* logout button*/
+.btn_position{
+  position: relative;
+  bottom: 10%;
+  overflow: visible;
+  margin-bottom: 10%;
+  margin-top: 2%;
+}
+
+/*
+smart phone
+*/
+@media screen and (max-width: 480px){
+  .imgSize {
+    width:150px;
+    height:150px;
+  }
+  .btn_position{
+    position: relative;
+    bottom: 10%;
+    overflow: visible;
+    margin-bottom: 20%;
+    margin-top: 2%;
+  }
+
+  /* border */
+  img.icon {
+    border: 1px black solid; 
+    width:12%;
+    height:12%;
+   }
+}
+
+/*
+burauza(??)
+*/
+@media screen and(min-width: 1270px){
+  .imgSize {
+    width:150px;
+    height:150px;
+  }
+  .btn_position{
+    position: relative;
+    bottom: 10%;
+    overflow: visible;
+    margin-bottom: 10%;
+    margin-top: 2%;
+  }
+
+  /* border */
+  img.icon {
+    border: 2px black solid; 
+    width:4%;
+    height:4%;
+   }
 }

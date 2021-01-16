@@ -17,6 +17,8 @@ type UserComponents interface{
 }
 type UserIdentifiers interface{
 	UserID()domain.UserID
+	Mail() string
+	Sex() int
 }
 
 // output port

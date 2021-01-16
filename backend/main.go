@@ -6,10 +6,10 @@ import (
 )
 
 func main() {
-	err :=cmd.RootCmd.Execute()
+	err := cmd.RootCmd.Execute()
 	fmt.Printf("HELLO server starts\n")
-	if err !=nil{
-		fmt.Printf("error: %w",err)
+	if err != nil {
+		fmt.Printf("error: %w", err)
 	}
-	return 
+	return
 }
