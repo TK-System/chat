@@ -13,7 +13,26 @@
 
 <body>
   <script>
-    window.onload = function () {
+      // userId from session
+      //var userId = window.sessionStorage["userId"];
+		  // 出力テスト
+      //console.log(userId);
+      
+      //GetFriendAPI
+      //const constFrinedListURL = '/friend/' + userId;
+      //var friendList;
+      //fetch(constFrinedListURL.then((res)=>{
+        //return (res.json());
+      //})
+      //.then((json)=>{
+        //syori
+        //friendList = JSON.parse(json);
+        //console.log(friendList);
+      //})
+
+		  
+     
+      window.onload = function () {
 
       // HTMLFormElement オブジェクト
       var form = document.getElementById("form");
@@ -157,7 +176,7 @@
       var friendData = {
         // n人分
         list: [
-          { id: '1', name: '山田 一郎', icon: 'img/myface.png' },
+          { id: '1', name: test, icon: 'img/myface.png' },
           { id: '2', name: '山田 二郎', icon: 'img/myface.png' },
           { id: '3', name: '山田 三郎', icon: 'img/myface.png' },
           { id: '4', name: '山田 4郎', icon: 'img/myface.png' },
