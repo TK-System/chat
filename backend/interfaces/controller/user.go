@@ -1,5 +1,12 @@
 package controller
 
+import (
+	"chat/backend/entity/domain"
+	"chat/backend/interfaces/presenter"
+	"chat/backend/usecases/interactor"
+	"chat/backend/usecases/port/server"
+)
+
 type UserController struct{
 	InputPort server.UserInputPort
 }
@@ -7,7 +14,7 @@ type UserController struct{
 func NewUserController()*UserController{
 	return &UserController{
 		InputPort: interactor.NewUserInteractor(
-			presenter.NewHttpPresenter(),
+			presenter.NewHttpPresenter(nil),
 			nil,
 		),
 	}
@@ -21,7 +28,7 @@ func (c *UserController)DownloadUser(params int)error{
 
 func (c *UserController)UploadUser(params string)error{
 	return c.InputPort.UploadUser(
-		NewUploadUserParam(params),
+		NewUploadUserParam(nil),
 	)
 }
 
@@ -29,7 +36,7 @@ type uploadUserParam struct{
 	params map[string]interface{}
 }
 func (p *uploadUserParam)UserName()string{
-	return p.name.(string)
+	return p.params["name"].(string)
 }
 
 
@@ -60,4 +67,14 @@ func NewDownloadUserParam(userID int)*downloadUserParam{
 
 func (p *downloadUserParam)UserID()domain.UserID{
 	return p.id
+}
+
+func (p *downloadUserParam)Mail()string{
+	return ""
+}
+func (p *downloadUserParam)Sex()int{
+	return 1
+}
+func (p *downloadUserParam)Name()string{
+	return ""
 }

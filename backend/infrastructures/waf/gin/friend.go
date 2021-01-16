@@ -1,12 +1,18 @@
 package gin
+import (
+	"chat/backend/interfaces/controller"
 
-func FriendRouter(r *Router){
-	ctrl := controller.NewFriendListController()
+	"github.com/gin-gonic/gin"
+)
 
-	r.POST("/friendList/",FriendListHandler)
+
+func FriendRoute(r *Router){
+	ctrl := controller.NewFriendController()
+
+	r.POST("/friendList/",FriendHandler(ctrl))
 }
 
-func FriendHundler (ctrl 	*controller.FriendListHundler)func(c *gin.Context){
+func FriendHandler (ctrl 	*controller.FriendController)func(c *gin.Context){
 	return func(c *gin.Context){
 		
 	}

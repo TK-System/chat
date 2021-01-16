@@ -1,5 +1,12 @@
 package controller
 
+import (
+// 	"chat/backend/entity/domain"
+	"chat/backend/interfaces/presenter"
+	"chat/backend/usecases/interactor"
+	"chat/backend/usecases/port/server"
+)
+
 type FriendController struct{
 	InputPort server.FriendInputPort
 }
@@ -7,7 +14,7 @@ type FriendController struct{
 func NewFriendController()*FriendController{
 	return &FriendController{
 		InputPort: interactor.NewFriendInteractor(
-			presenter.NewHttpPresenter(),
+			presenter.NewHttpPresenter(nil),
 			nil,
 		),
 	}

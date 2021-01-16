@@ -1,12 +1,13 @@
 package gin
 
 import (
+	"strconv"
 	"chat/backend/interfaces/controller"
 
 	"github.com/gin-gonic/gin"
 )
 
-func UserRouter(r *Router){
+func UserRoute(r *Router){
 	ctrl := controller.NewUserController()
 	r.GET("/user",downloadUser(ctrl))
 }
@@ -14,11 +15,11 @@ func UserRouter(r *Router){
 func downloadUser(ctrl 	*controller.UserController)func(c *gin.Context){
 	return func(c *gin.Context){
 		key := "user_id"
-params := getParams(c,[]string{key})
- id ,err := strconv.Atoi(params[key])
- if err !=nil {
-	// log error
-}
+		params := getParams(c,[]string{key})
+		id ,err := strconv.Atoi(params[key])
+		if err !=nil {
+			// log error
+		}
 		err = ctrl.DownloadUser(id)
 		if err !=nil {
 			// log error
@@ -36,10 +37,10 @@ func uploadUser(ctrl 	*controller.UserController)func(c *gin.Context){
 			"mail",
 			"sex",
 		}
-		params := getParams(keys)
-		
+		params := getParams(c,keys)
 
-		err := ctrl.DownloadUser()
+
+		err := ctrl.UploadUser(params["name"])
 		if err !=nil {
 			// log error
 		}
@@ -48,7 +49,7 @@ func uploadUser(ctrl 	*controller.UserController)func(c *gin.Context){
 }
 
 func getParams(c *gin.Context,keys []string)(map[string]string){
-	values := make(map[string]string,len(key))
+	values := make(map[string]string,len(keys))
 	for _,k :=range keys{
 		values[k]= c.Param(k)
 	}

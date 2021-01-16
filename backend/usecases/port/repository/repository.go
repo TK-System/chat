@@ -17,3 +17,8 @@ type MessageRepository interface{
 	Add([]domain.Message)error
 }
 
+type FriendRepository interface{
+	Find([]domain.FriendID)([]domain.Friend,error)
+	Add([]domain.Friend)error
+}
+

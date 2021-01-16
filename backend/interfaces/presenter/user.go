@@ -1,5 +1,10 @@
 package presenter
 
+import (
+	"chat/backend/entity/domain"
+	// "chat/backend/usecases/port/server"
+)
+
 func (p *HttpPresenter)	DownloadUser(users []domain.User)error{
 	type GetUserResponse struct{
 		UserID int `json:"userId"`
@@ -16,4 +21,8 @@ func (p *HttpPresenter)	DownloadUser(users []domain.User)error{
 
 	err := p.Response(body)
 	return err
+}
+
+func (p *HttpPresenter)UploadUser(){
+	return 
 }
