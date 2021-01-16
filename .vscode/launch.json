@@ -11,7 +11,10 @@
             "mode": "auto",
             "program": "${workspaceRoot}/backend/main.go",
             "env": {},
-            "args": []
+            "args": [
+                "s",
+                "/home/baikimman/go/src/caht/settings.toml"
+            ]
         }
     ]
 }
