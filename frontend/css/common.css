@@ -3,12 +3,6 @@
 	text-align: center;
 }
 
-/* TOP画像サイズ */
-.top_icon {
-	width:30%;
-	height:30%;
-}
-
 /* border */
 img.icon {
    border: 2px black solid; 

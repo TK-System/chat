@@ -9,75 +9,27 @@
 		integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
 	<link rel="stylesheet" href="css/common.css">
-	<style>
-		html {
-			height: 100%;
-			margin: 0 auto;
-			padding: 0;
-			display: table;
-		}
-
-		body {
-			min-height: 100%;
-			margin: 0 auto;
-			padding: 0;
-			display: table-cell;
-			vertical-align: middle;
-		}
-
-		/*
-		smart phone
-		*/
-		@media screen and (max-width: 480px) {
-			body {
-				min-height: 70%;
-				margin: 0 auto;
-				padding: 0;
-				display: table-cell;
-				vertical-align: middle;
-			}
-
-			.card {
-				border: none;
-			}
-		}
-	</style>
+	<link rel="stylesheet" href="css/login.css">
 </head>
 
 <body>
-<<<<<<< HEAD
-	<form class="text-center card" method="POST" action="../friendList">
-=======
-
-	<form name="testform" class="text-center card" method="POST" action="./friendList.html">
->>>>>>> 2c4058707fe97a44907d3293bbbd5ea932048767
-		<div class="card-body">
-			<h1 class="card-title"><img src="img/myface.png" alt="ログイン" class="rounded-circle top_icon"></h1>
-			<p class="card-text"><input type="text" id="userid" placeholder="username or email" required autofocus>
-			</p>
-			<p class="card-text"><input type="password" placeholder="password" required></p>
-			<p class="card-text"><a href="./passwordReset.html">パスワードをお忘れの場合</a></p>
-			<p class="card-text"><button id="submit" class="btn btn-primary" type="submit">ログイン</button></p>
-		</div>
-	</form>
-	<script>
-		document.getElementById("submit").onclick = function(){
-			// ウェブストレージに対応している
-			if (window.sessionStorage) {
-				// ------------------------------------------------------------
-				// セッションストレージオブジェクトを取得する
-				// ------------------------------------------------------------
-				var session_storage = window.sessionStorage;
-				// ------------------------------------------------------------
-				var str = document.getElementById('userid').value;
-				window.sessionStorage.setItem("userId", str);
-				// 文字列を読み込み
-				var test = window.sessionStorage["userId"];
-				// 出力テスト
-				console.log(test);
-			}
-		}
-	</script>
+	<div class="container" style="border-color: #aaa;">
+		<div class="login-container">
+				<div id="output"></div>
+				<div class="avatar"><img src="img/myface.png" alt="ログイン" class="rounded-circle top_icon"></div>
+				<div class="form-box">
+					<form action="./friendList.html" method="POST">
+						<input type="text" id="userid" name="user" placeholder="username or email" required autofocus>
+						<input type="password" placeholder="password" required>
+						<p class="card-text"><a href="./passwordReset.html">パスワードをお忘れの場合</a><br>
+							<a href="./regist.html">未登録の場合</a></p>
+						<button id= "submit" class="btn btn-info btn-block login" type="submit">Login</button>
+					</form>
+				</div>
+			</div>	
+	</div>
+	
+	<script type="text/javascript" src = "./js/login.js"></script>
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
 		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
 		crossorigin="anonymous"></script>

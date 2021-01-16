@@ -1,0 +1,23 @@
+/* regist design */
+html {
+	height: 100%;
+	width: 50%;
+	margin: 0 auto;
+	padding: 0;
+	display: table;
+}
+body {
+	min-height: 100%;
+	margin: 0 auto;
+	padding: 0;
+	display: table-cell;
+    vertical-align: middle;
+    border-color: #17a2b8;
+}
+
+.header-color{
+    background: #17a2b8;
+    border-radius: 10px 10px 0px 0px;
+    padding: 15px;
+    font-size: 25px;
+}
