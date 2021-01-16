@@ -1,0 +1,100 @@
+/*　中央寄席　*/
+.center {
+	text-align: center;
+}
+
+/* TOP画像サイズ */
+.top_icon {
+	width:30%;
+	height:30%;
+}
+
+/* border */
+img.icon {
+   border: 2px black solid; 
+   width:4%;
+   height:4%;
+  }
+
+/* regist画面フォーマット */
+.container {
+    max-width:400px;
+    border: solid 1px #4169E1;
+    border-radius:10px 10px 0px 0px;
+  }
+
+/* ヘッダーフォーマット　*/
+.header {
+    background: #4169E1;
+    border-radius:10px 10px 0px 0px;
+    padding: 15px;
+    font-size: 25px;
+  }
+
+/* padding設定 */
+fieldset{
+    padding: 15px;
+  }
+
+/* アコーディオン */
+.link_color{
+  color: black;
+  text-decoration: none;
+}
+
+/* logout button*/
+.btn_position{
+  position: relative;
+  bottom: 10%;
+  overflow: visible;
+  margin-bottom: 10%;
+  margin-top: 2%;
+}
+
+/*
+smart phone
+*/
+@media screen and (max-width: 480px){
+  .imgSize {
+    width:150px;
+    height:150px;
+  }
+  .btn_position{
+    position: relative;
+    bottom: 10%;
+    overflow: visible;
+    margin-bottom: 20%;
+    margin-top: 2%;
+  }
+
+  /* border */
+  img.icon {
+    border: 1px black solid; 
+    width:12%;
+    height:12%;
+   }
+}
+
+/*
+burauza(??)
+*/
+@media screen and(min-width: 1270px){
+  .imgSize {
+    width:150px;
+    height:150px;
+  }
+  .btn_position{
+    position: relative;
+    bottom: 10%;
+    overflow: visible;
+    margin-bottom: 10%;
+    margin-top: 2%;
+  }
+
+  /* border */
+  img.icon {
+    border: 2px black solid; 
+    width:4%;
+    height:4%;
+   }
+}
