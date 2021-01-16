@@ -1,5 +1,4 @@
 -- drop
-drop table if exists  talkRoom_message;
 drop table if exists  message;
 drop table if exists  user_group;
 drop table if exists  `group`;
