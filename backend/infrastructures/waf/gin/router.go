@@ -23,11 +23,13 @@ func NewRouter(port string)*Router{
 }
 
 func (r *Router)setRouter(){
-	r.GET("/",MessageHandler)
-	r.GET("/user")
-	r.GET("/login/",LoginHandler)
-	r.POST("/friendList/",FriendListHandler)
+	r.GET("/healthcheck",HealthCheck)
+	r.GET("/",HealthCheck)
+	
+	UserRoute(r)
+	FriendRoute(r)
 
+	r.GET("/login/",LoginHandler)
 }
 
 func (r *Router)RunServer()error{
@@ -36,7 +38,7 @@ func (r *Router)RunServer()error{
 }
 
 
-func MessageHandler(c *gin.Context){
+func HealthCheck(c *gin.Context){
 	c.JSON(http.StatusOK,gin.H{
 		"message":"hello world",
 	})
