@@ -8,12 +8,14 @@ import (
 	"github.com/spf13/cobra"
 )
 
+
+
 var ChatCmd = &cobra.Command{
 	Use: "chat",
 	Short: "kyota's first app",
-	Args:cobra.MinimumNArgs(1),
+	//Args:cobra.MinimumNArgs(1),
 	Run: func(cmd *cobra.Command, args []string) {
-
+		//cmd.Flags().GetString()
 		
 		fmt.Println("hello")
 		l := logger.NewLogger(true,true,"")
@@ -47,10 +49,10 @@ var ChatRun = &cobra.Command{
 	},
 }
 
-func init(){
-	ChatCmd.AddCommand(ChatRun)
-	cmdArgument()
-}
+//func init(){
+//	ChatCmd.AddCommand(ChatRun)
+//	cmdArgument()
+//}
 
 
 func cmdArgument(){

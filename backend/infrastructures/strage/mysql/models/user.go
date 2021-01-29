@@ -1,5 +1,10 @@
 package models
 
+import (
+	"golang.org/x/xerrors"
+	"xorm.io/xorm"
+)
+
 
 
 type User struct {
@@ -14,7 +19,7 @@ type User struct {
 
 type UserTransfer struct{
 	*xorm.Engine
-}
+} 
 
 
 func (t *UserTransfer)GetUser(id int)(*User,error){
@@ -32,9 +37,9 @@ func (t *UserTransfer)GetUser(id int)(*User,error){
 }
 
 func (t *UserTransfer)GetUsers(ids []int)([]*User,error){
-	u := make([]*User{},0,len(id))
+	u := make([]*User,0,len(ids))
 	err :=t.Engine.
-	In("id",ids...).
+	In("id",[]interface{}{ids}).
 	Find(&u)
 	if err !=nil{
 		return nil,err
@@ -44,13 +49,13 @@ func (t *UserTransfer)GetUsers(ids []int)([]*User,error){
 }
 
 func (t *UserTransfer)CreateUser(ids []int)(int,error){
-	u := make([]*User{},0,len(id))
+	u := make([]*User,0,len(ids))
 	err :=t.Engine.
-	In("id",ids...).
+	In("id",[]interface{}{ids}).
 	Find(&u)
 	if err !=nil{
-		return nil,err
+		return 0,err
 	}
 
-	return u,nil
+	return 0,nil
 }

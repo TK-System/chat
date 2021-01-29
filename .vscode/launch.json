@@ -12,8 +12,8 @@
             "program": "${workspaceRoot}/backend/main.go",
             "env": {},
             "args": [
-                "s",
-                "/home/baikimman/go/src/caht/settings.toml"
+                //"-s",
+                //"/home/baikimman/go/src/caht/settings.toml"
             ]
         }
     ]
