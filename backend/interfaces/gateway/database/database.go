@@ -1,15 +1,24 @@
 package database
 
+import (
+	"chat/backend/entity/domain"
+)
+
 type UserDBHandler interface{
-	GetUser(int)
-	GetUsers([]int)()
-	CreateUser()
+	GetUser(int)(User,error)
+	GetUsers([]int)([]User,error)
+	CreateUser([]int)error
+}
+
+type User interface{
+	ID()int
+	Name()string
+	Sex()int
 }
 
 
-
 type UserRepositoryAdapter struct{
-	//config 
+	//config  
 	UserDBHandler
 }
 
@@ -24,10 +33,21 @@ func (adapter *UserRepositoryAdapter)Find(userIDs []domain.UserID)([]domain.User
 	for i,v := range userIDs{
 		ids[i]=int(v)
 	}
-	adapter.GetUsers(ids)
+	users,err := adapter.GetUsers(ids)
+	if err !=nil{
+		return nil,err
+	}
+
+	retUsers := make([]domain.User,len(users))
+	for i,v := range users{
+		retUsers[i]=domain.NewUser(domain.UserID(v.ID()),v.Name())
+	}
+
+return retUsers,nil
+
 }
 
 func (adapter *UserRepositoryAdapter)Add([]domain.User)error{
-	err := adapter.CreateUser()
+	err := adapter.CreateUser([]int{1,1,1})
 	return err
 }

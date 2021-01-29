@@ -1,26 +1,26 @@
 # docker run --name chat-psql -e POSTGRES_PASSWORD=password  -d postgres
-version: '3.1'
+version: '3'
 
 services:
 
-  chat-psql:
-    image: postgres
-    environment:
-      POSTGRES_PASSWORD: example
-    ports:
-      - 5432:5432
+  #chat-psql:
+  #  image: postgres
+  #  environment:
+  #    POSTGRES_PASSWORD: example
+  #  ports:
+  #    - 5432:5432
 
   db:
-    image: mysql8.0
+    image: mysql
+    container_name: chat_mysql
     environment:
       MYSQL_ROOT_PASSWORD: password
       MYSQL_DATABASE: chatdb
       MYSQL_USER: tksystem
       MYSQL_PASSWORD: covit19
-    port: 
+    ports: 
       - 3306:3306
+    command: mysqld --character-set-server=utf8
     volumes:
-      
-      
-    
-
+    - ./migration.sql:/var/lib/mysql/
+    - ./test_data.sql:/var/lib/mysql/

@@ -16,7 +16,17 @@ values
     ('room2'),
     ('room3'),
     ('room4'),
-    ('room5');
+    ('room5'),
+    ('room6'),
+    ('room7'),
+    ('room8'),
+    ('room9'),
+    ('room10'),
+    ('room11'),
+    ('room12'),
+    ('room13'),
+    ('room14'),
+    ('room15');
 
 -- friend testdata
 insert into friend
@@ -32,7 +42,7 @@ values
     ('5','1','4',true);
 
 -- group testdata
-insert into group
+insert into `group`
     (groupName,roomId)
 values
     ('group10','10'),

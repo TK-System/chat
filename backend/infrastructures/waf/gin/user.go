@@ -1,22 +1,25 @@
 package gin
 
 import (
-	"strconv"
 	"chat/backend/interfaces/controller"
+	"chat/backend/interfaces/gateway/database"
+	"strconv"
 
 	"github.com/gin-gonic/gin"
 )
 
-func UserRoute(r *Router){
-	ctrl := controller.NewUserController()
-	r.GET("/user",downloadUser(ctrl))
+func UserRoute(r *Router,db database.UserDBHandler){
+	ctrl := controller.NewUserController(db)
+	r.GET("/user/:id",downloadUser(ctrl))
 }
 
 func downloadUser(ctrl 	*controller.UserController)func(c *gin.Context){
 	return func(c *gin.Context){
-		key := "user_id"
-		params := getParams(c,[]string{key})
-		id ,err := strconv.Atoi(params[key])
+		//rw := NewResponseWriter(c)
+
+
+		userID := c.Param("id")
+		id ,err := strconv.Atoi(userID)
 		if err !=nil {
 			// log error
 		}
@@ -32,6 +35,8 @@ func downloadUser(ctrl 	*controller.UserController)func(c *gin.Context){
 
 func uploadUser(ctrl 	*controller.UserController)func(c *gin.Context){
 	return func(c *gin.Context){
+
+
 		keys := []string{
 			"name",
 			"mail",

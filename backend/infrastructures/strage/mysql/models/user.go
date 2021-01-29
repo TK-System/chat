@@ -1,6 +1,8 @@
 package models
 
 import (
+	"chat/backend/interfaces/gateway/database"
+
 	"golang.org/x/xerrors"
 	"xorm.io/xorm"
 )
@@ -22,7 +24,30 @@ type UserTransfer struct{
 } 
 
 
-func (t *UserTransfer)GetUser(id int)(*User,error){
+type UserRaw struct{
+	user *User
+}
+
+func (m *UserRaw)ID()int{
+	return m.user.Id
+}
+func (m *UserRaw)Name ()string{
+return m.user.Username 
+}
+func (m *UserRaw)Mail     ()string{
+return m.user.Mail     
+}
+func (m *UserRaw)Pass     ()string{
+return m.user.Pass     
+}
+func (m *UserRaw)Sex      ()int{
+return m.user.Sex      
+}   
+func (m *UserRaw)Lang     ()int{
+return m.user.Lang     
+}   
+
+func (t *UserTransfer)GetUser(id int)(database.User,error){
 	u := &User{}
 	has,err :=t.Engine.Where("id = ?",id).Get(u)
 	if err !=nil{
@@ -33,29 +58,36 @@ func (t *UserTransfer)GetUser(id int)(*User,error){
 		return nil,xerrors.New("no user")
 	}
 
-	return u,nil
+	return &UserRaw{user:u},nil
 }
 
-func (t *UserTransfer)GetUsers(ids []int)([]*User,error){
-	u := make([]*User,0,len(ids))
-	err :=t.Engine.
-	In("id",[]interface{}{ids}).
+func (t *UserTransfer)GetUsers(ids []int)([]database.User,error){
+	u := make([]User,0,len(ids))
+	err :=t.Engine.Table("user").
+	In("id",[]interface{}{ids[0]}).
 	Find(&u)
 	if err !=nil{
 		return nil,err
 	}
 
-	return u,nil
+	retUser := make([]database.User,len(u))
+	for i,v := range u{
+		retUser[i]=&UserRaw{
+			user: &v,
+		}
+	}
+
+	return retUser,nil
 }
 
-func (t *UserTransfer)CreateUser(ids []int)(int,error){
+func (t *UserTransfer)CreateUser(ids []int)error{
 	u := make([]*User,0,len(ids))
 	err :=t.Engine.
 	In("id",[]interface{}{ids}).
 	Find(&u)
 	if err !=nil{
-		return 0,err
+		return err
 	}
 
-	return 0,nil
+	return nil
 }

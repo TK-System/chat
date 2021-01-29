@@ -2,6 +2,7 @@ package controller
 
 import (
 	"chat/backend/entity/domain"
+	"chat/backend/interfaces/gateway/database"
 	"chat/backend/interfaces/presenter"
 	"chat/backend/usecases/interactor"
 	"chat/backend/usecases/port/server"
@@ -11,11 +12,11 @@ type UserController struct{
 	InputPort server.UserInputPort
 }
 
-func NewUserController()*UserController{
+func NewUserController(rw presenter.ResponseServer,db database.UserDBHandler)*UserController{
 	return &UserController{
 		InputPort: interactor.NewUserInteractor(
-			presenter.NewHttpPresenter(nil),
-			nil,
+			presenter.NewHttpPresenter(rw),
+			database.NewUserRepositoryAdapter(db),
 		),
 	}
 }

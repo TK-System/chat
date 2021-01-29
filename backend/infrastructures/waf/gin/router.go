@@ -1,6 +1,7 @@
 package gin
 
 import (
+	"chat/backend/infrastructures/strage/mysql"
 	"fmt"
 	"io/ioutil"
 	"net/http"
@@ -23,10 +24,15 @@ func NewRouter(port string)*Router{
 }
 
 func (r *Router)setRouter(){
+db ,err:= mysql.NewDB("tksystem","covit19","localhost","3306","chatdb")
+if err !=nil{
+return 
+}
+
 	r.GET("/healthcheck",HealthCheck)
 	r.GET("/",HealthCheck)
 	
-	UserRoute(r)
+	UserRoute(r,db.NewUserTransfer())
 	FriendRoute(r)
 
 	r.GET("/login/",LoginHandler)
